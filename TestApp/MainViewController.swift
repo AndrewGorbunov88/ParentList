@@ -7,34 +7,9 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+class MainViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var childTable: UITableView!
-    private var childrenArray = [(nameChild: String, ageChild: String)]() {
-        didSet {
-            self.childTable.reloadData()
-            checkTableState()
-        }
-    }
-    
-    private let dictionaryWords = ["1": "год",
-                                   "2": "года",
-                                   "3": "года",
-                                   "4": "года",
-                                   "5": "лет",
-                                   "6": "лет",
-                                   "7": "лет",
-                                   "8": "лет",
-                                   "9": "лет",
-                                   "10": "лет",
-                                   "11": "лет",
-                                   "12": "лет",
-                                   "13": "лет",
-                                   "14": "лет",
-                                   "15": "лет",
-                                   "16": "лет",
-                                   "17": "лет",
-                                   "18": "лет"]
     
     @IBOutlet weak var lastNameField: UITextField!
     @IBOutlet weak var firstNameField: UITextField!
@@ -44,14 +19,18 @@ class MainViewController: UIViewController, UITextFieldDelegate, UITableViewDele
     @IBOutlet weak var phoneField: UITextField!
     
     private var startIndexCollection = 0
-    private var indexSelectedChild = Int()
     private var fieldCollection = [UITextField]()
     
     private var fieldControl: TextFieldControl?
+    private var dataSourceAndDelegate: ChildrenTable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Убираю UITableViewDelegate и DataSource в отдельный класс, чтобы облегчить контроллер
+        dataSourceAndDelegate = ChildrenTable(vc: self, tableView: childTable)
+        childTable.delegate = dataSourceAndDelegate
+        childTable.dataSource = dataSourceAndDelegate
         checkTableState()
         
         fieldCollection.append(lastNameField)
@@ -59,6 +38,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, UITableViewDele
         fieldCollection.append(patronymicField)
         fieldCollection.append(phoneField)
         
+        //Убираю UITextFieldDelegate в отдельный класс, чтобы облегчить контроллер
         fieldControl = TextFieldControl(vc: self, collection: fieldCollection)
         
         for field in fieldCollection {
@@ -72,9 +52,20 @@ class MainViewController: UIViewController, UITextFieldDelegate, UITableViewDele
         fieldCollection.last?.returnKeyType = .done
         fieldCollection.first?.becomeFirstResponder()
         
+        createChildDidChangeObserver()
+        
     }
     
     //MARK: - Methods
+    
+    private func createChildDidChangeObserver() {
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(tableViewRefresh), name: .didCountChildrenChange, object: nil)
+    }
+
+    @objc func tableViewRefresh(notification: Notification) {
+        checkTableState()
+    }
     
     private func createToolBar() -> UIToolbar {
         let toolBar = UIToolbar()
@@ -92,11 +83,13 @@ class MainViewController: UIViewController, UITextFieldDelegate, UITableViewDele
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "childCreate" {
             let vc = segue.destination as? UINavigationController
             let targetVC = vc?.topViewController as? ChildInfoController
             targetVC?.stateCreate = .createChild
-            targetVC?.delegateChild = self
+            targetVC?.delegateChild = dataSourceAndDelegate
+            
         } else if segue.identifier == "childEdit" {
             let vcSecond = segue.destination as? UINavigationController
             let editVC = vcSecond?.topViewController as? ChildInfoController
@@ -105,96 +98,27 @@ class MainViewController: UIViewController, UITextFieldDelegate, UITableViewDele
                 editVC?.ageChild = child.ageChild
                 editVC?.stateCreate = .editChild
             }
-            editVC?.delegateChild = self
+            
+            editVC?.delegateChild = dataSourceAndDelegate
         }
     }
     
     private func checkTableState() {
-        if childrenArray.isEmpty {
-            self.childTable.isHidden = true
-        }
         
-        if childrenArray.count > 4 {
-            self.plusBarButton.isEnabled = false
-        } else {
-            self.plusBarButton.isEnabled = true
-        }
-    }
-    
-    //MARK: - UITableViewDataSource, UITableViewDelegate
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return childrenArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        var cell = tableView.dequeueReusableCell(withIdentifier: "childrenCell") as? ChildCell
-        
-        if (cell == nil) {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "childrenCell") as? ChildCell
-        }
-        
-        let row = indexPath.row
-        cell?.childNameLabel.text = childrenArray[row].nameChild
-        
-        let stringTranslateFromDicitionary = childrenArray[row].ageChild
-        if let symbol = dictionaryWords[stringTranslateFromDicitionary] {
-            cell?.childAgeLabel.text = childrenArray[row].ageChild + " " + symbol
-        } else {
-            cell?.childAgeLabel.text = childrenArray[row].ageChild
-        }
-        
-        return cell!
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Список детей"
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        if editingStyle == .delete {
+        if let dataFromTable = dataSourceAndDelegate {
             
-            var sourceArray = childrenArray
-            sourceArray.remove(at: indexPath.row)
-            childrenArray = sourceArray
+            if dataFromTable.childrenArray.isEmpty {
+                self.childTable.isHidden = true
+            }
             
-            self.childTable.beginUpdates()
-            self.childTable.endUpdates()
+            if dataFromTable.childrenArray.count > 4 {
+                self.plusBarButton.isEnabled = false
+            } else {
+                self.plusBarButton.isEnabled = true
+            }
             
         }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
         
-        let selectChild = childrenArray[indexPath.row]
-        indexSelectedChild = indexPath.row
-        
-        self.performSegue(withIdentifier: "childEdit", sender: selectChild)
     }
 
-}
-
-extension MainViewController: ChildInfoDelegate {
-    
-    func addChild(withName name: String, withAge age: String, state: ChildInfoController.Mode) {
-        let child = (nameChild: name, ageChild: age)
-        
-        switch state {
-        case .createChild:
-            childrenArray.append(child)
-            self.childTable.isHidden = false
-        case .editChild:
-            childrenArray[indexSelectedChild].nameChild = child.nameChild
-            childrenArray[indexSelectedChild].ageChild = child.ageChild
-            indexSelectedChild = Int()
-        }
-    }
-    
 }

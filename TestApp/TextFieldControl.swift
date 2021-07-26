@@ -62,7 +62,6 @@ class TextFieldControl: NSObject, UITextFieldDelegate {
         
         if textField.isEqual(parentFieldCollection[3]) {
             
-            //запрещаю вводить все кроме цифр
             let validationSet = CharacterSet.decimalDigits
             let components = string.components(separatedBy: validationSet.inverted)
             
@@ -70,11 +69,9 @@ class TextFieldControl: NSObject, UITextFieldDelegate {
                 return false
             }
             
-            //создаю новую строку для ее форматирования
             let text = (textField.text ?? "") as NSString
             var newString = text.replacingCharacters(in: range, with: string)
             
-            //запрещаю вводить больше одного разделителя "-"
             let validComponents = newString.components(separatedBy: validationSet.inverted)
             newString = validComponents.joined(separator: "")
             
@@ -82,7 +79,6 @@ class TextFieldControl: NSObject, UITextFieldDelegate {
             
             var resultingString = NSMutableString()
             
-            //если длина строки больше форматированной, то запрещаю ввод символов
             if newString.count > TextFieldControl.localNumberMaxLength + TextFieldControl.areaCodeMaxLength + TextFieldControl.countryCodeMaxLength {
                 return false
             }

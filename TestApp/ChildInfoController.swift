@@ -114,6 +114,7 @@ class ChildInfoController: UITableViewController, UITextFieldDelegate {
         }
         
         childFieldControl = ChildFieldControl(vc: self, collection: fieldsCollection)
+        
         for field in fieldsCollection {
             field.tag = startIndexCollection
             field.autocapitalizationType = .words
@@ -127,6 +128,5 @@ class ChildInfoController: UITableViewController, UITextFieldDelegate {
 }
 
 protocol ChildInfoDelegate {
-//    func addChild(withName name: String, withAge age: String state: ChildInfo.Mode, with courses: Set<NSManagedObject>)
     func addChild(withName name: String, withAge age: String, state: ChildInfoController.Mode)
 }

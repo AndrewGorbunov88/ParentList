@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		890DE4BF26AEFC3900D40B68 /* ChildrenTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890DE4BE26AEFC3900D40B68 /* ChildrenTable.swift */; };
 		898C7F5626AC40BD0095A7B4 /* TextFieldControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898C7F5526AC40BD0095A7B4 /* TextFieldControl.swift */; };
 		898C7F5826AD460B0095A7B4 /* ChildInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898C7F5726AD460B0095A7B4 /* ChildInfoController.swift */; };
 		898C7F5A26AD4DF10095A7B4 /* ChildFieldControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898C7F5926AD4DF10095A7B4 /* ChildFieldControl.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		890DE4BE26AEFC3900D40B68 /* ChildrenTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildrenTable.swift; sourceTree = "<group>"; };
 		898C7F5526AC40BD0095A7B4 /* TextFieldControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldControl.swift; sourceTree = "<group>"; };
 		898C7F5726AD460B0095A7B4 /* ChildInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildInfoController.swift; sourceTree = "<group>"; };
 		898C7F5926AD4DF10095A7B4 /* ChildFieldControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildFieldControl.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				89CBB0CA26AC21DB00C7364B /* SceneDelegate.swift */,
 				89CBB0CE26AC21DB00C7364B /* Main.storyboard */,
 				89CBB0CC26AC21DB00C7364B /* MainViewController.swift */,
+				890DE4BE26AEFC3900D40B68 /* ChildrenTable.swift */,
 				898C7F5526AC40BD0095A7B4 /* TextFieldControl.swift */,
 				898C7F5726AD460B0095A7B4 /* ChildInfoController.swift */,
 				898C7F5926AD4DF10095A7B4 /* ChildFieldControl.swift */,
@@ -159,6 +162,7 @@
 				898C7F5626AC40BD0095A7B4 /* TextFieldControl.swift in Sources */,
 				89CBB0C926AC21DB00C7364B /* AppDelegate.swift in Sources */,
 				898C7F5C26AD5D9C0095A7B4 /* ChildCell.swift in Sources */,
+				890DE4BF26AEFC3900D40B68 /* ChildrenTable.swift in Sources */,
 				89CBB0CB26AC21DB00C7364B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
