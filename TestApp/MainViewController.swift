@@ -52,6 +52,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         fieldCollection.last?.returnKeyType = .done
         fieldCollection.first?.becomeFirstResponder()
         
+        //смотрю за изменением состояния массива tableView
         createChildDidChangeObserver()
         
     }
@@ -65,6 +66,24 @@ class MainViewController: UIViewController, UITextFieldDelegate {
 
     @objc func tableViewRefresh(notification: Notification) {
         checkTableState()
+    }
+    
+    private func checkTableState() {
+        
+        if let dataFromTable = dataSourceAndDelegate {
+            
+            if dataFromTable.childrenArray.isEmpty {
+                self.childTable.isHidden = true
+            }
+            
+            if dataFromTable.childrenArray.count > 4 {
+                self.plusBarButton.isEnabled = false
+            } else {
+                self.plusBarButton.isEnabled = true
+            }
+            
+        }
+        
     }
     
     private func createToolBar() -> UIToolbar {
@@ -103,22 +122,5 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    private func checkTableState() {
-        
-        if let dataFromTable = dataSourceAndDelegate {
-            
-            if dataFromTable.childrenArray.isEmpty {
-                self.childTable.isHidden = true
-            }
-            
-            if dataFromTable.childrenArray.count > 4 {
-                self.plusBarButton.isEnabled = false
-            } else {
-                self.plusBarButton.isEnabled = true
-            }
-            
-        }
-        
-    }
 
 }
