@@ -92,15 +92,18 @@ class ChildrenTable: NSObject, UITableViewDataSource, UITableViewDelegate {
             self.parentViewController.childTable.endUpdates()
             
         }
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         tableView.deselectRow(at: indexPath, animated: true)
         
         let selectChild = childrenArray[indexPath.row]
         indexSelectedChild = indexPath.row
         
         parentViewController.performSegue(withIdentifier: "childEdit", sender: selectChild)
+        
     }
     
 }
@@ -108,6 +111,7 @@ class ChildrenTable: NSObject, UITableViewDataSource, UITableViewDelegate {
 extension ChildrenTable: ChildInfoDelegate {
     
     func addChild(withName name: String, withAge age: String, state: ChildInfoController.Mode) {
+        
         let child = (nameChild: name, ageChild: age)
         
         switch state {
@@ -119,6 +123,7 @@ extension ChildrenTable: ChildInfoDelegate {
             childrenArray[indexSelectedChild].ageChild = child.ageChild
             indexSelectedChild = Int()
         }
+        
     }
     
 }

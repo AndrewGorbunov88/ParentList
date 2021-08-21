@@ -27,7 +27,9 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Убираю UITableViewDelegate и DataSource в отдельный класс, чтобы облегчить контроллер
+        self.childTable.rowHeight = 44
+        
+        //Убираю UITableViewDelegate и DataSource в отдельный класс ChildrenTable, чтобы облегчить контроллер
         dataSourceAndDelegate = ChildrenTable(vc: self, tableView: childTable)
         childTable.delegate = dataSourceAndDelegate
         childTable.dataSource = dataSourceAndDelegate
@@ -38,7 +40,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         fieldCollection.append(patronymicField)
         fieldCollection.append(phoneField)
         
-        //Убираю UITextFieldDelegate в отдельный класс, чтобы облегчить контроллер
+        //Убираю UITextFieldDelegate в отдельный класс TextFieldControl, чтобы облегчить контроллер
         fieldControl = TextFieldControl(vc: self, collection: fieldCollection)
         
         for field in fieldCollection {
@@ -60,8 +62,10 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     //MARK: - Methods
     
     private func createChildDidChangeObserver() {
+        
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(tableViewRefresh), name: .didCountChildrenChange, object: nil)
+        
     }
 
     @objc func tableViewRefresh(notification: Notification) {
@@ -87,6 +91,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func createToolBar() -> UIToolbar {
+        
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
         
@@ -95,6 +100,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         toolBar.setItems([flexibleButton, doneButton], animated: false)
         
         return toolBar
+        
     }
     
     @objc private func hideKeyboard() {
@@ -120,7 +126,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             
             editVC?.delegateChild = dataSourceAndDelegate
         }
+        
     }
-    
 
 }

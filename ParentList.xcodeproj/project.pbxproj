@@ -16,7 +16,7 @@
 		89CBB0CB26AC21DB00C7364B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CBB0CA26AC21DB00C7364B /* SceneDelegate.swift */; };
 		89CBB0CD26AC21DB00C7364B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CBB0CC26AC21DB00C7364B /* MainViewController.swift */; };
 		89CBB0D026AC21DB00C7364B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89CBB0CE26AC21DB00C7364B /* Main.storyboard */; };
-		89CBB0D326AC21DB00C7364B /* TestApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89CBB0D126AC21DB00C7364B /* TestApp.xcdatamodeld */; };
+		89CBB0D326AC21DB00C7364B /* ParentList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 89CBB0D126AC21DB00C7364B /* ParentList.xcdatamodeld */; };
 		89CBB0D526AC21DB00C7364B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89CBB0D426AC21DB00C7364B /* Assets.xcassets */; };
 		89CBB0D826AC21DB00C7364B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89CBB0D626AC21DB00C7364B /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -27,7 +27,7 @@
 		898C7F5726AD460B0095A7B4 /* ChildInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildInfoController.swift; sourceTree = "<group>"; };
 		898C7F5926AD4DF10095A7B4 /* ChildFieldControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildFieldControl.swift; sourceTree = "<group>"; };
 		898C7F5B26AD5D9B0095A7B4 /* ChildCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCell.swift; sourceTree = "<group>"; };
-		89CBB0C526AC21DB00C7364B /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		89CBB0C526AC21DB00C7364B /* ParentList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParentList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89CBB0C826AC21DB00C7364B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89CBB0CA26AC21DB00C7364B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		89CBB0CC26AC21DB00C7364B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -52,7 +52,7 @@
 		89CBB0BC26AC21DB00C7364B = {
 			isa = PBXGroup;
 			children = (
-				89CBB0C726AC21DB00C7364B /* TestApp */,
+				89CBB0C726AC21DB00C7364B /* ParentList */,
 				89CBB0C626AC21DB00C7364B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,12 +60,12 @@
 		89CBB0C626AC21DB00C7364B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				89CBB0C526AC21DB00C7364B /* TestApp.app */,
+				89CBB0C526AC21DB00C7364B /* ParentList.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		89CBB0C726AC21DB00C7364B /* TestApp */ = {
+		89CBB0C726AC21DB00C7364B /* ParentList */ = {
 			isa = PBXGroup;
 			children = (
 				89CBB0C826AC21DB00C7364B /* AppDelegate.swift */,
@@ -80,17 +80,17 @@
 				89CBB0D426AC21DB00C7364B /* Assets.xcassets */,
 				89CBB0D626AC21DB00C7364B /* LaunchScreen.storyboard */,
 				89CBB0D926AC21DB00C7364B /* Info.plist */,
-				89CBB0D126AC21DB00C7364B /* TestApp.xcdatamodeld */,
+				89CBB0D126AC21DB00C7364B /* ParentList.xcdatamodeld */,
 			);
-			path = TestApp;
+			path = ParentList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		89CBB0C426AC21DB00C7364B /* TestApp */ = {
+		89CBB0C426AC21DB00C7364B /* ParentList */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 89CBB0DC26AC21DB00C7364B /* Build configuration list for PBXNativeTarget "TestApp" */;
+			buildConfigurationList = 89CBB0DC26AC21DB00C7364B /* Build configuration list for PBXNativeTarget "ParentList" */;
 			buildPhases = (
 				89CBB0C126AC21DB00C7364B /* Sources */,
 				89CBB0C226AC21DB00C7364B /* Frameworks */,
@@ -100,9 +100,9 @@
 			);
 			dependencies = (
 			);
-			name = TestApp;
+			name = ParentList;
 			productName = TestApp;
-			productReference = 89CBB0C526AC21DB00C7364B /* TestApp.app */;
+			productReference = 89CBB0C526AC21DB00C7364B /* ParentList.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -119,7 +119,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 89CBB0C026AC21DB00C7364B /* Build configuration list for PBXProject "TestApp" */;
+			buildConfigurationList = 89CBB0C026AC21DB00C7364B /* Build configuration list for PBXProject "ParentList" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -132,7 +132,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				89CBB0C426AC21DB00C7364B /* TestApp */,
+				89CBB0C426AC21DB00C7364B /* ParentList */,
 			);
 		};
 /* End PBXProject section */
@@ -157,7 +157,7 @@
 			files = (
 				89CBB0CD26AC21DB00C7364B /* MainViewController.swift in Sources */,
 				898C7F5A26AD4DF10095A7B4 /* ChildFieldControl.swift in Sources */,
-				89CBB0D326AC21DB00C7364B /* TestApp.xcdatamodeld in Sources */,
+				89CBB0D326AC21DB00C7364B /* ParentList.xcdatamodeld in Sources */,
 				898C7F5826AD460B0095A7B4 /* ChildInfoController.swift in Sources */,
 				898C7F5626AC40BD0095A7B4 /* TextFieldControl.swift in Sources */,
 				89CBB0C926AC21DB00C7364B /* AppDelegate.swift in Sources */,
@@ -312,12 +312,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q8YR89ZJ2P;
-				INFOPLIST_FILE = TestApp/Info.plist;
+				INFOPLIST_FILE = ParentList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Gorbunov.TestApp;
+				PRODUCT_BUNDLE_IDENTIFIER = Gorbunov.ParentList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -331,12 +331,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q8YR89ZJ2P;
-				INFOPLIST_FILE = TestApp/Info.plist;
+				INFOPLIST_FILE = ParentList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Gorbunov.TestApp;
+				PRODUCT_BUNDLE_IDENTIFIER = Gorbunov.ParentList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -346,7 +346,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		89CBB0C026AC21DB00C7364B /* Build configuration list for PBXProject "TestApp" */ = {
+		89CBB0C026AC21DB00C7364B /* Build configuration list for PBXProject "ParentList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				89CBB0DA26AC21DB00C7364B /* Debug */,
@@ -355,7 +355,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		89CBB0DC26AC21DB00C7364B /* Build configuration list for PBXNativeTarget "TestApp" */ = {
+		89CBB0DC26AC21DB00C7364B /* Build configuration list for PBXNativeTarget "ParentList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				89CBB0DD26AC21DB00C7364B /* Debug */,
@@ -367,13 +367,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		89CBB0D126AC21DB00C7364B /* TestApp.xcdatamodeld */ = {
+		89CBB0D126AC21DB00C7364B /* ParentList.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				89CBB0D226AC21DB00C7364B /* TestApp.xcdatamodel */,
 			);
 			currentVersion = 89CBB0D226AC21DB00C7364B /* TestApp.xcdatamodel */;
-			path = TestApp.xcdatamodeld;
+			path = ParentList.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

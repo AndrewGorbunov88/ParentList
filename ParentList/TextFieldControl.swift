@@ -91,7 +91,7 @@ class TextFieldControl: NSObject, UITextFieldDelegate {
                 if resultingString.length > 3 {
                     resultingString.insert("-", at: 3)
                 }
-                print("resultingString = \(resultingString)")
+                
             }
             
             if newString.count > TextFieldControl.localNumberMaxLength {
